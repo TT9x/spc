@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShoppyCam - Giải Pháp Camera Thông Minh Cho Cửa Hàng</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animated {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #e73c7e, #23a6d5);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 5px rgba(231, 60, 126, 0.3)); }
+            to { filter: drop-shadow(0 0 15px rgba(35, 166, 213, 0.5)); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #e73c7e, #23a6d5);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            padding: 0 5%;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: slideInLeft 1s ease-out 0.3s both;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            animation: slideInRight 1s ease-out 0.6s both;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .cta-buttons {
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            margin: 0.5rem;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #333;
+            transform: translateY(-3px);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 5%;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #e73c7e, #23a6d5);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 4rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #e73c7e, #23a6d5);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            animation: countUp 2s ease-out;
+        }
+
+        @keyframes countUp {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 5rem 5%;
+            background: #f8f9fa;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card.featured {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 1rem 0;
+            background: linear-gradient(45deg, #e73c7e, #23a6d5);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .pricing-card.featured .price {
+            color: white;
+            -webkit-text-fill-color: white;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .testimonial-slider {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            padding: 2rem 0;
+            scroll-snap-type: x mandatory;
+        }
+
+        .testimonial-card {
+            min-width: 350px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            scroll-snap-align: start;
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 5% 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #23d5ab;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+        }
+
+        /* Floating Elements */
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .shape {
+            position: absolute;
+            background: rgba(255,255,255,0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            animation-delay: -0.5s;
+        }
+
+        .shape:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            width: 120px;
+            height: 120px;
+            border-radius: 30%;
+            animation-delay: -2s;
+        }
+
+        .shape:nth-child(3) {
+            bottom: 30%;
+            left: 20%;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            animation-delay: -4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+            }
+        }
+
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">📸 ShoppyCam</div>
+            <ul class="nav-links">
+                <li><a href="#features">Tính Năng</a></li>
+                <li><a href="#pricing">Giá Cả</a></li>
+                <li><a href="#testimonials">Đánh Giá</a></li>
+                <li><a href="#contact">Liên Hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero bg-animated">
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <div class="hero-content">
+            <h1>ShoppyCam</h1>
+            <p>Giải pháp camera thông minh AI cho cửa hàng của bạn</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">Dùng Thử Miễn Phí</a>
+                <a href="#" class="btn btn-secondary">Xem Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Tính Năng Nổi Bật</h2>
+            <p class="section-subtitle animate-on-scroll">Công nghệ AI tiên tiến giúp quản lý cửa hàng hiệu quả</p>
+            
+            <div class="features-grid">
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Nhận Diện Thông Minh</h3>
+                    <p>AI nhận diện khách hàng, sản phẩm và hành vi mua sắm với độ chính xác cao</p>
+                </div>
+                
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">📊</div>
+                    <h3>Phân Tích Dữ Liệu</h3>
+                    <p>Báo cáo chi tiết về lượng khách, thời gian cao điểm và xu hướng mua sắm</p>
+                </div>
+                
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">🔒</div>
+                    <h3>An Ninh 24/7</h3>
+                    <p>Giám sát an ninh liên tục với cảnh báo thời gian thực qua smartphone</p>
+                </div>
+                
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">📱</div>
+                    <h3>Quản Lý Di Động</h3>
+                    <p>Ứng dụng mobile để theo dõi và quản lý từ xa mọi lúc mọi nơi</p>
+                </div>
+                
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">💡</div>
+                    <h3>Tự Động Hóa</h3>
+                    <p>Tự động điều chỉnh ánh sáng, âm nhạc và nhiệt độ theo số lượng khách</p>
+                </div>
+                
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">☁️</div>
+                    <h3>Lưu Trữ Cloud</h3>
+                    <p>Dữ liệu được lưu trữ an toàn trên cloud với khả năng truy cập không giới hạn</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <h2 class="section-title" style="color: white; margin-bottom: 3rem;">Con Số Ấn Tượng</h2>
+            <div class="stats-grid">
+                <div class="stat-item animate-on-scroll">
+                    <h3>5000+</h3>
+                    <p>Cửa hàng tin dùng</p>
+                </div>
+                <div class="stat-item animate-on-scroll">
+                    <h3>99.9%</h3>
+                    <p>Thời gian hoạt động</p>
+                </div>
+                <div class="stat-item animate-on-scroll">
+                    <h3>24/7</h3>
+                    <p>Hỗ trợ khách hàng</p>
+                </div>
+                <div class="stat-item animate-on-scroll">
+                    <h3>150+</h3>
+                    <p>Quốc gia sử dụng</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Gói Dịch Vụ</h2>
+            <p class="section-subtitle animate-on-scroll">Chọn gói phù hợp với nhu cầu của bạn</p>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card animate-on-scroll">
+                    <h3>Gói Cơ Bản</h3>
+                    <div class="price">990K<span style="font-size: 1rem;">/tháng</span></div>
+                    <ul style="list-style: none; padding: 0;">
+                        <li>✓ 2 camera AI</li>
+                        <li>✓ Báo cáo cơ bản</li>
+                        <li>✓ Hỗ trợ 8x5</li>
+                        <li>✓ 30 ngày lưu trữ</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary" style="margin-top: 1rem;">Chọn Gói</a>
+                </div>
+                
+                <div class="pricing-card featured animate-on-scroll">
+                    <h3>Gói Pro</h3>
+                    <div class="price">1.990K<span style="font-size: 1rem;">/tháng</span></div>
+                    <ul style="list-style: none; padding: 0;">
+                        <li>✓ 5 camera AI</li>
+                        <li>✓ Báo cáo nâng cao</li>
+                        <li>✓ Hỗ trợ 24/7</li>
+                        <li>✓ 90 ngày lưu trữ</li>
+                        <li>✓ Tích hợp POS</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary" style="margin-top: 1rem;">Gói Phổ Biến</a>
+                </div>
+                
+                <div class="pricing-card animate-on-scroll">
+                    <h3>Gói Enterprise</h3>
+                    <div class="price">Liên Hệ</div>
+                    <ul style="list-style: none; padding: 0;">
+                        <li>✓ Không giới hạn camera</li>
+                        <li>✓ Báo cáo tùy chỉnh</li>
+                        <li>✓ Hỗ trợ ưu tiên</li>
+                        <li>✓ Lưu trữ không giới hạn</li>
+                        <li>✓ API tích hợp</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary" style="margin-top: 1rem;">Liên Hệ</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Khách Hàng Nói Gì</h2>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial-card">
+                    <p>"ShoppyCam đã giúp tôi tăng doanh thu 30% chỉ trong 3 tháng. Hệ thống phân tích khách hàng rất chi tiết!"</p>
+                    <h4>- Anh Minh, Chủ cửa hàng thời trang</h4>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p>"An ninh cửa hàng được đảm bảo 100%. Tôi có thể yên tâm theo dõi từ xa mọi lúc mọi nơi."</p>
+                    <h4>- Chị Hoa, Chủ cửa hàng điện thoại</h4>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p>"Giao diện thân thiện, dễ sử dụng. Team support rất nhiệt tình và chuyên nghiệp!"</p>
+                    <h4>- Anh Tuấn, Chủ cửa hàng tạp hóa</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ShoppyCam</h3>
+                    <p>Giải pháp camera thông minh AI hàng đầu cho cửa hàng bán lẻ tại Việt Nam.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Liên Hệ</h3>
+                    <p>📧 info@shoppycam.vn</p>
+                    <p>📞 1900-xxxx</p>
+                    <p>📍 Hưng Yên, Việt Nam</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Dịch Vụ</h3>
+                    <p>Camera AI</p>
+                    <p>Phân tích dữ liệu</p>
+                    <p>An ninh 24/7</p>
+                    <p>Hỗ trợ kỹ thuật</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Theo Dõi</h3>
+                    <p>📱 Facebook</p>
+                    <p>📷 Instagram</p>
+                    <p>💼 LinkedIn</p>
+                    <p>📺 YouTube</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 ShoppyCam. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Animate on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Counter animation for stats
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-item h3');
+            counters.forEach(counter => {
+                const target = parseInt(counter.textContent.replace(/\D/g, ''));
+                const increment = target / 100;
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        if (counter.textContent.includes('K')) {
+                            counter.textContent = Math.floor(current) + 'K';
+                        } else if (counter.textContent.includes('%')) {
+                            counter.textContent = Math.floor(current) + '%';
+                        } else if (counter.textContent.includes('/')) {
+                            counter.textContent = '24/7';
+                        } else if (counter.textContent.includes('+')) {
+                            counter.textContent = Math.floor(current) + '+';
+                        } else {
+                            counter.textContent = Math.floor(current);
+                        }
+                        requestAnimationFrame(updateCounter);
+                    }
+                };
+                updateCounter();
+            });
+        }
+
+        // Trigger counter animation when stats section is visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Floating elements movement
+        function createFloatingElements() {
+            const shapes = document.querySelectorAll('.shape');
+            shapes.forEach((shape, index) => {
+                const randomX = Math.random() * 100;
+                const randomY = Math.random() * 100;
+                const randomDelay = Math.random() * 2;
+                
+                shape.style.left = randomX + '%';
+                shape.style.top = randomY + '%';
+                shape.style.animationDelay = randomDelay + 's';
+            });
+        }
+
+        createFloatingElements();
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            const heroContent = document.querySelector('.hero-content');
+            if (heroContent) {
+                heroContent.style.transform = `translateY(${rate}px)`;
+            }
+        });
+
+        // Dynamic gradient colors based on time
+        function updateGradientColors() {
+            const hour = new Date().getHours();
+            const hero = document.querySelector('.hero');
+            
+            if (hour >= 6 && hour < 12) {
+                // Morning - warmer colors
+                hero.style.background = 'linear-gradient(-45deg, #ff9a9e, #fecfef, #fecfef, #fecfef)';
+            } else if (hour >= 12 && hour < 18) {
+                // Afternoon - bright colors
+                hero.style.background = 'linear-gradient(-45deg, #a8edea, #fed6e3, #a8edea, #fed6e3)';
+            } else if (hour >= 18 && hour < 22) {
+                // Evening - sunset colors
+                hero.style.background = 'linear-gradient(-45deg, #ff6b6b, #feca57, #ff9ff3, #54a0ff)';
+            } else {
+                // Night - cool colors
+                hero.style.background = 'linear-gradient(-45deg, #667eea, #764ba2, #667eea, #764ba2)';
+            }
+        }
+
+        updateGradientColors();
+
+        // Interactive cursor effect
+        document.addEventListener('mousemove', (e) => {
+            const cursor = document.querySelector('.cursor');
+            if (!cursor) {
+                const newCursor = document.createElement('div');
+                newCursor.className = 'cursor';
+                newCursor.style.cssText = `
+                    position: fixed;
+                    width: 20px;
+                    height: 20px;
+                    background: radial-gradient(circle, rgba(231,60,126,0.3) 0%, transparent 70%);
+                    border-radius: 50%;
+                    pointer-events: none;
+                    z-index: 9999;
+                    transition: transform 0.1s ease;
+                `;
+                document.body.appendChild(newCursor);
+            }
+            
+            const cursorElement = document.querySelector('.cursor');
+            cursorElement.style.left = e.clientX - 10 + 'px';
+            cursorElement.style.top = e.clientY - 10 + 'px';
+        });
+
+        // Add hover effects to interactive elements
+        document.querySelectorAll('.btn, .feature-card, .pricing-card').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                const cursor = document.querySelector('.cursor');
+                if (cursor) {
+                    cursor.style.transform = 'scale(2)';
+                    cursor.style.background = 'radial-gradient(circle, rgba(35,166,213,0.4) 0%, transparent 70%)';
+                }
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                const cursor = document.querySelector('.cursor');
+                if (cursor) {
+                    cursor.style.transform = 'scale(1)';
+                    cursor.style.background = 'radial-gradient(circle, rgba(231,60,126,0.3) 0%, transparent 70%)';
+                }
+            });
+        });
+
+        // Mobile menu toggle (for responsive design)
+        const createMobileMenu = () => {
+            const nav = document.querySelector('.nav');
+            const menuButton = document.createElement('button');
+            menuButton.innerHTML = '☰';
+            menuButton.style.cssText = `
+                display: none;
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                cursor: pointer;
+                color: #333;
+            `;
+            
+            menuButton.addEventListener('click', () => {
+                const navLinks = document.querySelector('.nav-links');
+                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            });
+            
+            nav.appendChild(menuButton);
+            
+            // Show menu button on mobile
+            const updateMenuVisibility = () => {
+                if (window.innerWidth <= 768) {
+                    menuButton.style.display = 'block';
+                    document.querySelector('.nav-links').style.cssText = `
+                        display: none;
+                        position: absolute;
+                        top: 100%;
+                        left: 0;
+                        width: 100%;
+                        background: rgba(255,255,255,0.98);
+                        flex-direction: column;
+                        padding: 1rem;
+                        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+                    `;
+                } else {
+                    menuButton.style.display = 'none';
+                    document.querySelector('.nav-links').style.cssText = `
+                        display: flex;
+                        position: static;
+                        width: auto;
+                        background: none;
+                        flex-direction: row;
+                        padding: 0;
+                        box-shadow: none;
+                    `;
+                }
+            };
+            
+            window.addEventListener('resize', updateMenuVisibility);
+            updateMenuVisibility();
+        };
+
+        createMobileMenu();
+
+        // Performance optimization - lazy loading for images
+        const lazyImages = document.querySelectorAll('img[data-src]');
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.remove('lazy');
+                    imageObserver.unobserve(img);
+                }
+            });
+        });
+
+        lazyImages.forEach(img => imageObserver.observe(img));
+
+        // Contact form submission (if you add a contact form)
+        const handleFormSubmission = () => {
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    // Add your form submission logic here
+                    alert('Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất có thể.');
+                });
+            });
+        };
+
+        handleFormSubmission();
+
+        // Scroll to top button
+        const createScrollToTop = () => {
+            const scrollButton = document.createElement('button');
+            scrollButton.innerHTML = '↑';
+            scrollButton.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background: linear-gradient(45deg, #e73c7e, #23a6d5);
+                color: white;
+                border: none;
+                font-size: 1.2rem;
+                cursor: pointer;
+                opacity: 0;
+                transform: translateY(100px);
+                transition: all 0.3s ease;
+                z-index: 1000;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            `;
+            
+            scrollButton.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    scrollButton.style.opacity = '1';
+                    scrollButton.style.transform = 'translateY(0)';
+                } else {
+                    scrollButton.style.opacity = '0';
+                    scrollButton.style.transform = 'translateY(100px)';
+                }
+            });
+            
+            document.body.appendChild(scrollButton);
+        };
+
+        createScrollToTop();
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            const loader = document.createElement('div');
+            loader.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+                background-size: 400% 400%;
+                animation: gradientShift 2s ease infinite;
+                z-index: 10000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 2rem;
+                font-weight: bold;
+                transition: opacity 0.5s ease;
+            `;
+            loader.innerHTML = '📸 ShoppyCam';
+            
+            document.body.appendChild(loader);
+            
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.remove();
+                }, 500);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
