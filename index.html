@@ -4,7 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShoppyCam - Giải Pháp Camera Thông Minh Cho Cửa Hàng</title>
+    <meta name="description" content="ShoppyCam - Giải pháp camera AI thông minh hàng đầu cho cửa hàng bán lẻ. Nhận diện khách hàng, phân tích dữ liệu, an ninh 24/7. Dùng thử miễn phí ngay!">
+    <meta name="keywords" content="camera ai, camera cửa hàng, an ninh shop, phân tích khách hàng, shoppycam">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="ShoppyCam - Camera AI Thông Minh Cho Cửa Hàng">
+    <meta property="og:description" content="Tăng doanh thu 30% với AI camera thông minh. Nhận diện khách hàng, phân tích hành vi, an ninh 24/7.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630/e73c7e/ffffff?text=ShoppyCam">
+    
+    <!-- Reset Blogspot default styles -->
     <style>
+        /* Reset Blogspot defaults */
+        .blog-posts, .sidebar, .footer, .header-wrapper {
+            display: none !important;
+        }
+        
+        body.item-view .post-outer, 
+        body.static_page .post-outer {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            background: none !important;
+        }
+        
+        .main-inner {
+            max-width: none !important;
+            padding: 0 !important;
+        }
+        
+        .content-inner {
+            padding: 0 !important;
+        }
+        
+        /* Landing Page Styles */
         * {
             margin: 0;
             padding: 0;
@@ -12,10 +45,11 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
             line-height: 1.6;
             color: #333;
             overflow-x: hidden;
+            background: none !important;
         }
 
         /* Animated Background */
@@ -199,6 +233,18 @@
             transform: translateY(-3px);
         }
 
+        .btn-demo {
+            background: linear-gradient(45deg, #23a6d5, #764ba2);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-demo:hover {
+            background: linear-gradient(45deg, #1e8cb8, #5a3a7a);
+            transform: translateY(-3px);
+        }
+
         /* Features Section */
         .features {
             padding: 5rem 5%;
@@ -273,10 +319,229 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Stats Section */
-        .stats {
+        /* Testimonials Section */
+        .testimonials {
             padding: 5rem 5%;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .rating {
+            display: flex;
+            gap: 0.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .star {
+            color: #ffd700;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-content {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-style: italic;
+            position: relative;
+        }
+
+        .testimonial-content::before {
+            content: '"';
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.3);
+            position: absolute;
+            top: -15px;
+            left: -10px;
+            font-family: serif;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            object-fit: cover;
+        }
+
+        .author-avatar.placeholder {
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .author-info h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .author-info p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Video Modal */
+        .video-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .video-modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 800px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-modal-header {
+            padding: 1.5rem;
+            background: linear-gradient(45deg, #e73c7e, #23a6d5);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .video-modal-header h3 {
+            margin: 0;
+            font-size: 1.3rem;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 3rem auto 0;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.9);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 3rem 5%;
+            background: #2c3e50;
             color: white;
         }
 
@@ -288,98 +553,14 @@
         }
 
         .stat-item h3 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 0.5rem;
-            animation: countUp 2s ease-out;
-        }
-
-        @keyframes countUp {
-            from { opacity: 0; transform: scale(0.5); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        /* Pricing Section */
-        .pricing {
-            padding: 5rem 5%;
-            background: #f8f9fa;
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .pricing-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .pricing-card.featured {
-            transform: scale(1.05);
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-        }
-
-        .price {
-            font-size: 3rem;
-            font-weight: bold;
-            margin: 1rem 0;
-            background: linear-gradient(45deg, #e73c7e, #23a6d5);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .pricing-card.featured .price {
-            color: white;
-            -webkit-text-fill-color: white;
-        }
-
-        /* Testimonials */
-        .testimonials {
-            padding: 5rem 5%;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-        }
-
-        .testimonial-slider {
-            display: flex;
-            gap: 2rem;
-            overflow-x: auto;
-            padding: 2rem 0;
-            scroll-snap-type: x mandatory;
-        }
-
-        .testimonial-card {
-            min-width: 350px;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 20px;
-            scroll-snap-align: start;
-            transition: transform 0.3s ease;
-        }
-
-        .testimonial-card:hover {
-            transform: scale(1.05);
+            color: #23d5ab;
         }
 
         /* Footer */
         .footer {
-            background: #2c3e50;
+            background: #1a252f;
             color: white;
             padding: 3rem 5% 1rem;
         }
@@ -403,7 +584,7 @@
             color: #bdc3c7;
         }
 
-        /* Floating Elements */
+        /* Floating Shapes */
         .floating-shapes {
             position: absolute;
             top: 0;
@@ -452,6 +633,33 @@
             50% { transform: translateY(-20px) rotate(180deg); }
         }
 
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 80px;
+            right: 20px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
@@ -470,8 +678,48 @@
                 font-size: 2rem;
             }
             
-            .pricing-card.featured {
-                transform: none;
+            .features-grid, .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .video-modal-content {
+                width: 95%;
+                margin: 1rem;
+            }
+
+            .video-modal-header {
+                padding: 1rem;
+            }
+
+            .video-modal-header h3 {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 0 1rem;
+            }
+            
+            .features, .testimonials {
+                padding: 3rem 1rem;
+            }
+            
+            .btn {
+                display: block;
+                margin: 0.5rem 0;
+            }
+
+            .testimonials-grid {
+                gap: 1.5rem;
+            }
+
+            .testimonial-card {
+                padding: 2rem;
             }
         }
 
@@ -486,18 +734,57 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Loading Animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientShift 2s ease infinite;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            transition: opacity 0.5s ease;
+        }
     </style>
 </head>
 <body>
+    <!-- Loading Animation -->
+    <div class="loading-overlay" id="loading">
+        📸 ShoppyCam
+    </div>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <div class="video-modal-header">
+                <h3>🎬 Demo ShoppyCam - Xem Hoạt Động Thực Tế</h3>
+                <button class="close-modal" onclick="closeVideoModal()">&times;</button>
+            </div>
+            <div class="video-container">
+                <iframe id="videoFrame" src="" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
     <!-- Header -->
     <header class="header">
         <nav class="nav">
             <div class="logo">📸 ShoppyCam</div>
             <ul class="nav-links">
                 <li><a href="#features">Tính Năng</a></li>
-                <li><a href="#pricing">Giá Cả</a></li>
                 <li><a href="#testimonials">Đánh Giá</a></li>
+                <li><a href="#stats">Thống Kê</a></li>
                 <li><a href="#contact">Liên Hệ</a></li>
+                <li><a href="tel:1900xxxx">📞 Hotline</a></li>
             </ul>
         </nav>
     </header>
@@ -511,10 +798,12 @@
         </div>
         <div class="hero-content">
             <h1>ShoppyCam</h1>
-            <p>Giải pháp camera thông minh AI cho cửa hàng của bạn</p>
+            <p>🚀 Giải pháp Camera AI thông minh cho cửa hàng<br>
+            ⚡ Tăng doanh thu 30% - An ninh 24/7 - Phân tích khách hàng</p>
             <div class="cta-buttons">
-                <a href="#" class="btn btn-primary">Dùng Thử Miễn Phí</a>
-                <a href="#" class="btn btn-secondary">Xem Demo</a>
+                <a href="#contact" class="btn btn-primary">📞 Tư Vấn Miễn Phí</a>
+                <button onclick="openVideoModal()" class="btn btn-demo">🎬 Xem Demo</button>
+                <a href="https://wa.me/84xxxxxxxxx" class="btn btn-secondary">💬 Chat Zalo</a>
             </div>
         </div>
     </section>
@@ -522,53 +811,219 @@
     <!-- Features Section -->
     <section class="features" id="features">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">Tính Năng Nổi Bật</h2>
-            <p class="section-subtitle animate-on-scroll">Công nghệ AI tiên tiến giúp quản lý cửa hàng hiệu quả</p>
+            <h2 class="section-title animate-on-scroll">Tại Sao Chọn ShoppyCam?</h2>
+            <p class="section-subtitle animate-on-scroll">Công nghệ AI hàng đầu Việt Nam</p>
             
             <div class="features-grid">
                 <div class="feature-card animate-on-scroll">
                     <div class="feature-icon">🎯</div>
-                    <h3>Nhận Diện Thông Minh</h3>
-                    <p>AI nhận diện khách hàng, sản phẩm và hành vi mua sắm với độ chính xác cao</p>
+                    <h3>AI Nhận Diện Thông Minh</h3>
+                    <p><strong>✅ Nhận diện khuôn mặt</strong><br>
+                    ✅ Phân tích hành vi khách hàng<br>
+                    ✅ Cảnh báo khách đáng ngờ<br>
+                    ✅ Độ chính xác 99.9%</p>
                 </div>
                 
                 <div class="feature-card animate-on-scroll">
                     <div class="feature-icon">📊</div>
-                    <h3>Phân Tích Dữ Liệu</h3>
-                    <p>Báo cáo chi tiết về lượng khách, thời gian cao điểm và xu hướng mua sắm</p>
+                    <h3>Báo Cáo Kinh Doanh</h3>
+                    <p><strong>📈 Thống kê lượng khách</strong><br>
+                    📊 Phân tích giờ cao điểm<br>
+                    💰 Tối ưu doanh thu<br>
+                    📱 Xem báo cáo trên điện thoại</p>
                 </div>
                 
                 <div class="feature-card animate-on-scroll">
                     <div class="feature-icon">🔒</div>
                     <h3>An Ninh 24/7</h3>
-                    <p>Giám sát an ninh liên tục với cảnh báo thời gian thực qua smartphone</p>
+                    <p><strong>🚨 Cảnh báo tức thì</strong><br>
+                    🔍 Theo dõi từ xa<br>
+                    💾 Lưu trữ video an toàn<br>
+                    🌙 Camera night vision</p>
                 </div>
                 
                 <div class="feature-card animate-on-scroll">
-                    <div class="feature-icon">📱</div>
-                    <h3>Quản Lý Di Động</h3>
-                    <p>Ứng dụng mobile để theo dõi và quản lý từ xa mọi lúc mọi nơi</p>
+                    <div class="feature-icon">⚡</div>
+                    <h3>Dễ Dàng Sử Dụng</h3>
+                    <p><strong>🔧 Lắp đặt trong 1 ngày</strong><br>
+                    📱 App điều khiển thân thiện<br>
+                    👨‍💻 Hỗ trợ 24/7<br>
+                    💻 Xem trên mọi thiết bị</p>
                 </div>
                 
                 <div class="feature-card animate-on-scroll">
-                    <div class="feature-icon">💡</div>
-                    <h3>Tự Động Hóa</h3>
-                    <p>Tự động điều chỉnh ánh sáng, âm nhạc và nhiệt độ theo số lượng khách</p>
+                    <div class="feature-icon">💰</div>
+                    <h3>Tiết Kiệm Chi Phí</h3>
+                    <p><strong>💵 Giảm 50% chi phí bảo vệ</strong><br>
+                    📉 Giảm thất thoát hàng hóa<br>
+                    ⚡ Tăng hiệu quả vận hành<br>
+                    🎯 ROI chỉ sau 3 tháng</p>
                 </div>
                 
                 <div class="feature-card animate-on-scroll">
                     <div class="feature-icon">☁️</div>
-                    <h3>Lưu Trữ Cloud</h3>
-                    <p>Dữ liệu được lưu trữ an toàn trên cloud với khả năng truy cập không giới hạn</p>
+                    <h3>Công Nghệ Cloud</h3>
+                    <p><strong>☁️ Lưu trữ không giới hạn</strong><br>
+                    🔄 Đồng bộ real-time<br>
+                    🌐 Truy cập mọi nơi<br>
+                    🛡️ Bảo mật tuyệt đối</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">⭐ Khách Hàng Nói Gì Về ShoppyCam</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Hơn 5000+ cửa hàng đã tin tưởng</p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="rating">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <div class="testimonial-content">
+                        ShoppyCam đã thay đổi hoàn toàn cách chúng tôi vận hành cửa hàng. Doanh thu tăng 35% chỉ sau 2 tháng nhờ phân tích hành vi khách hàng chính xác. Đầu tư tốt nhất năm 2024!
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" 
+                             alt="Nguyễn Văn Minh" class="author-avatar"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="author-avatar placeholder" style="display: none;">NM</div>
+                        <div class="author-info">
+                            <h4>Nguyễn Văn Minh</h4>
+                            <p>Chủ cửa hàng thời trang MiMi Store</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="rating">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <div class="testimonial-content">
+                        Hệ thống cảnh báo an ninh cực kỳ thông minh! Đã giúp chúng tôi ngăn chặn 3 vụ trộm cướp. Support team rất chuyên nghiệp, setup nhanh gọn trong vòng 4 tiếng.
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b120?w=150&h=150&fit=crop&crop=face" 
+                             alt="Trần Thị Lan" class="author-avatar"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="author-avatar placeholder" style="display: none;">TL</div>
+                        <div class="author-info">
+                            <h4>Trần Thị Lan</h4>
+                            <p>Chủ cửa hàng điện thoại TechWorld</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="rating">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <div class="testimonial-content">
+                        App mobile quá tiện! Ngồi ở nhà vẫn theo dõi được cửa hàng real-time. Báo cáo kinh doanh chi tiết giúp tôi đưa ra quyết định chính xác về hàng hóa và nhân sự.
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" 
+                             alt="Lê Hoàng Duy" class="author-avatar"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="author-avatar placeholder" style="display: none;">LD</div>
+                        <div class="author-info">
+                            <h4>Lê Hoàng Duy</h4>
+                            <p>Chủ chuỗi cửa hàng giày dép DuyShoes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="rating">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <div class="testimonial-content">
+                        Trước đây mất nhiều thời gian kiểm tra camera thủ công. Giờ AI tự động phân tích và gửi cảnh báo, tiết kiệm 80% thời gian. Giá cả hợp lý, ROI nhanh chóng!
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face" 
+                             alt="Phạm Thị Hoa" class="author-avatar"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="author-avatar placeholder" style="display: none;">PH</div>
+                        <div class="author-info">
+                            <h4>Phạm Thị Hoa</h4>
+                            <p>Chủ siêu thị mini Hoa Fresh</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="rating">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <div class="testimonial-content">
+                        Tính năng phân tích giờ cao điểm cực hay! Giúp tôi sắp xếp ca làm việc hợp lý, tăng doanh thu khung giờ vàng. Customer service 24/7 luôn hỗ trợ nhiệt tình.
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=150&fit=crop&crop=face" 
+                             alt="Võ Minh Tâm" class="author-avatar"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="author-avatar placeholder" style="display: none;">VT</div>
+                        <div class="author-info">
+                            <h4>Võ Minh Tâm</h4>
+                            <p>Chủ cửa hàng café Tâm Coffee</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="rating">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <div class="testimonial-content">
+                        Từ khi dùng ShoppyCam, tỷ lệ thất thoát hàng giảm 90%. Hệ thống cloud backup cực an toàn, không lo mất dữ liệu. Đội ngũ kỹ thuật chuyên nghiệp, nhiệt tình!
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop&crop=face" 
+                             alt="Đặng Văn Long" class="author-avatar"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="author-avatar placeholder" style="display: none;">DL</div>
+                        <div class="author-info">
+                            <h4>Đặng Văn Long</h4>
+                            <p>Chủ cửa hàng tạp hóa Long Mart</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Stats Section -->
-    <section class="stats">
+    <section class="stats" id="stats">
         <div class="container">
-            <h2 class="section-title" style="color: white; margin-bottom: 3rem;">Con Số Ấn Tượng</h2>
+            <h2 class="section-title" style="color: white; margin-bottom: 3rem;">🏆 Thành Tích Ấn Tượng</h2>
             <div class="stats-grid">
                 <div class="stat-item animate-on-scroll">
                     <h3>5000+</h3>
@@ -579,129 +1034,189 @@
                     <p>Thời gian hoạt động</p>
                 </div>
                 <div class="stat-item animate-on-scroll">
-                    <h3>24/7</h3>
-                    <p>Hỗ trợ khách hàng</p>
+                    <h3>30%</h3>
+                    <p>Tăng trưởng doanh thu</p>
                 </div>
                 <div class="stat-item animate-on-scroll">
-                    <h3>150+</h3>
-                    <p>Quốc gia sử dụng</p>
+                    <h3>24/7</h3>
+                    <p>Hỗ trợ không ngừng</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section class="pricing" id="pricing">
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">Gói Dịch Vụ</h2>
-            <p class="section-subtitle animate-on-scroll">Chọn gói phù hợp với nhu cầu của bạn</p>
+            <h2 class="section-title" style="color: white;">🔥 Đăng Ký Tư Vấn MIỄN PHÍ</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 1rem;">
+                ⚡ <strong>Ưu đãi đặc biệt tháng này:</strong><br>
+                🎁 Miễn phí lắp đặt camera đầu tiên<br>
+                🎁 Tặng 1 tháng sử dụng dịch vụ<br>
+                🎁 Hỗ trợ 24/7 trọn đời
+            </p>
             
-            <div class="pricing-grid">
-                <div class="pricing-card animate-on-scroll">
-                    <h3>Gói Cơ Bản</h3>
-                    <div class="price">990K<span style="font-size: 1rem;">/tháng</span></div>
-                    <ul style="list-style: none; padding: 0;">
-                        <li>✓ 2 camera AI</li>
-                        <li>✓ Báo cáo cơ bản</li>
-                        <li>✓ Hỗ trợ 8x5</li>
-                        <li>✓ 30 ngày lưu trữ</li>
-                    </ul>
-                    <a href="#" class="btn btn-primary" style="margin-top: 1rem;">Chọn Gói</a>
-                </div>
-                
-                <div class="pricing-card featured animate-on-scroll">
-                    <h3>Gói Pro</h3>
-                    <div class="price">1.990K<span style="font-size: 1rem;">/tháng</span></div>
-                    <ul style="list-style: none; padding: 0;">
-                        <li>✓ 5 camera AI</li>
-                        <li>✓ Báo cáo nâng cao</li>
-                        <li>✓ Hỗ trợ 24/7</li>
-                        <li>✓ 90 ngày lưu trữ</li>
-                        <li>✓ Tích hợp POS</li>
-                    </ul>
-                    <a href="#" class="btn btn-primary" style="margin-top: 1rem;">Gói Phổ Biến</a>
-                </div>
-                
-                <div class="pricing-card animate-on-scroll">
-                    <h3>Gói Enterprise</h3>
-                    <div class="price">Liên Hệ</div>
-                    <ul style="list-style: none; padding: 0;">
-                        <li>✓ Không giới hạn camera</li>
-                        <li>✓ Báo cáo tùy chỉnh</li>
-                        <li>✓ Hỗ trợ ưu tiên</li>
-                        <li>✓ Lưu trữ không giới hạn</li>
-                        <li>✓ API tích hợp</li>
-                    </ul>
-                    <a href="#" class="btn btn-primary" style="margin-top: 1rem;">Liên Hệ</a>
-                </div>
+            <div style="margin-bottom: 2rem;">
+                <button onclick="openVideoModal()" class="btn btn-demo" style="font-size: 1.1rem; padding: 1rem 2rem;">
+                    🎬 XEM DEMO HOẠT ĐỘNG THỰC TẾ
+                </button>
             </div>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="testimonials" id="testimonials">
-        <div class="container">
-            <h2 class="section-title" style="color: white;">Khách Hàng Nói Gì</h2>
             
-            <div class="testimonial-slider">
-                <div class="testimonial-card">
-                    <p>"ShoppyCam đã giúp tôi tăng doanh thu 30% chỉ trong 3 tháng. Hệ thống phân tích khách hàng rất chi tiết!"</p>
-                    <h4>- Anh Minh, Chủ cửa hàng thời trang</h4>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">🏪 Tên cửa hàng / Họ tên *</label>
+                    <input type="text" id="name" name="name" required placeholder="Nhập tên cửa hàng hoặc họ tên của bạn">
                 </div>
                 
-                <div class="testimonial-card">
-                    <p>"An ninh cửa hàng được đảm bảo 100%. Tôi có thể yên tâm theo dõi từ xa mọi lúc mọi nơi."</p>
-                    <h4>- Chị Hoa, Chủ cửa hàng điện thoại</h4>
+                <div class="form-group">
+                    <label for="phone">📞 Số điện thoại *</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="Nhập số điện thoại để được tư vấn">
                 </div>
                 
-                <div class="testimonial-card">
-                    <p>"Giao diện thân thiện, dễ sử dụng. Team support rất nhiệt tình và chuyên nghiệp!"</p>
-                    <h4>- Anh Tuấn, Chủ cửa hàng tạp hóa</h4>
+                <div class="form-group">
+                    <label for="address">📍 Địa chỉ cửa hàng</label>
+                    <input type="text" id="address" name="address" placeholder="Địa chỉ cửa hàng (để tư vấn phù hợp)">
                 </div>
-            </div>
+                
+                <div class="form-group">
+                    <label for="message">💬 Nhu cầu cụ thể</label>
+                    <textarea id="message" name="message" placeholder="Ví dụ: Cần camera cho cửa hàng thời trang 50m2, quan tâm tính năng phân tích khách hàng..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="font-size: 1.1rem; padding: 1.2rem 2rem;">
+                    🚀 NHẬN TƯ VẤN MIỄN PHÍ NGAY
+                </button>
+                
+                <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.9;">
+                    ⏰ Chúng tôi sẽ liên hệ trong vòng 30 phút<br>
+                    🔒 Thông tin của bạn được bảo mật tuyệt đối
+                </p>
+            </form>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer" id="contact">
+    <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>ShoppyCam</h3>
-                    <p>Giải pháp camera thông minh AI hàng đầu cho cửa hàng bán lẻ tại Việt Nam.</p>
+                    <h3>📸 ShoppyCam</h3>
+                    <p>Giải pháp camera AI thông minh hàng đầu Việt Nam cho cửa hàng bán lẻ.</p>
+                    <p><strong>🏢 Văn phòng chính:</strong> Hưng Yên, Việt Nam</p>
                 </div>
                 
                 <div class="footer-section">
-                    <h3>Liên Hệ</h3>
-                    <p>📧 info@shoppycam.vn</p>
-                    <p>📞 1900-xxxx</p>
-                    <p>📍 Hưng Yên, Việt Nam</p>
+                    <h3>📞 Liên Hệ Nhanh</h3>
+                    <p><strong>Hotline:</strong> <a href="tel:1900xxxx" style="color: #23d5ab;">1900-xxxx</a></p>
+                    <p><strong>Zalo:</strong> <a href="https://zalo.me/xxxxxxxxx" style="color: #23d5ab;">0xxx-xxx-xxx</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:info@shoppycam.vn" style="color: #23d5ab;">info@shoppycam.vn</a></p>
                 </div>
                 
                 <div class="footer-section">
-                    <h3>Dịch Vụ</h3>
-                    <p>Camera AI</p>
-                    <p>Phân tích dữ liệu</p>
-                    <p>An ninh 24/7</p>
-                    <p>Hỗ trợ kỹ thuật</p>
+                    <h3>🎯 Dịch Vụ</h3>
+                    <p>✅ Camera AI thông minh</p>
+                    <p>✅ Phân tích dữ liệu khách hàng</p>
+                    <p>✅ Hệ thống an ninh 24/7</p>
+                    <p>✅ Tư vấn & lắp đặt</p>
                 </div>
                 
                 <div class="footer-section">
-                    <h3>Theo Dõi</h3>
-                    <p>📱 Facebook</p>
-                    <p>📷 Instagram</p>
-                    <p>💼 LinkedIn</p>
-                    <p>📺 YouTube</p>
+                    <h3>⭐ Đánh Giá Khách Hàng</h3>
+                    <p>⭐⭐⭐⭐⭐ "Doanh thu tăng ngay tháng đầu!"</p>
+                    <p>⭐⭐⭐⭐⭐ "Hỗ trợ rất nhiệt tình!"</p>
+                    <p>⭐⭐⭐⭐⭐ "Công nghệ hiện đại, dễ sử dụng!"</p>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2025 ShoppyCam. Tất cả quyền được bảo lưu.</p>
+                <p>&copy; 2025 ShoppyCam Vietnam. Bảo lưu mọi quyền.</p>
+                <p>🔒 Website được bảo mật SSL | 🚀 Thiết kế responsive</p>
             </div>
         </div>
     </footer>
 
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/84xxxxxxxxx?text=Tôi%20muốn%20tư%20vấn%20về%20ShoppyCam" class="whatsapp-float" target="_blank" title="Chat WhatsApp">
+        💬
+    </a>
+
+    <!-- Scroll to top button -->
+    <button id="scrollTop" style="
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: linear-gradient(45deg, #e73c7e, #23a6d5);
+        color: white;
+        border: none;
+        font-size: 1.2rem;
+        cursor: pointer;
+        opacity: 0;
+        transform: translateY(100px);
+        transition: all 0.3s ease;
+        z-index: 999;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    ">↑</button>
+
     <script>
+        // Video Modal Functions
+        function openVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const videoFrame = document.getElementById('videoFrame');
+            
+            // Thay thế YOUR_YOUTUBE_VIDEO_ID bằng ID video YouTube thực tế
+            const youtubeVideoId = 'dQw4w9WgXcQ'; // Ví dụ: Rick Roll video
+            const embedUrl = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&rel=0`;
+            
+            videoFrame.src = embedUrl;
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent body scrolling
+            
+            // Track demo view
+            trackClick('Demo Video Opened');
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const videoFrame = document.getElementById('videoFrame');
+            
+            modal.style.display = 'none';
+            videoFrame.src = '';
+            document.body.style.overflow = 'auto';
+            
+            trackClick('Demo Video Closed');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('videoModal');
+            if (event.target == modal) {
+                closeVideoModal();
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeVideoModal();
+            }
+        });
+
+        // Remove loading animation
+        window.addEventListener('load', function() {
+            const loading = document.getElementById('loading');
+            if (loading) {
+                setTimeout(() => {
+                    loading.style.opacity = '0';
+                    setTimeout(() => {
+                        loading.remove();
+                    }, 500);
+                }, 1000);
+            }
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -719,6 +1234,8 @@
         // Header scroll effect
         window.addEventListener('scroll', () => {
             const header = document.querySelector('.header');
+            const scrollTop = document.getElementById('scrollTop');
+            
             if (window.scrollY > 100) {
                 header.style.background = 'rgba(255, 255, 255, 0.98)';
                 header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
@@ -726,6 +1243,20 @@
                 header.style.background = 'rgba(255, 255, 255, 0.95)';
                 header.style.boxShadow = 'none';
             }
+
+            // Show/hide scroll to top button
+            if (window.scrollY > 300) {
+                scrollTop.style.opacity = '1';
+                scrollTop.style.transform = 'translateY(0)';
+            } else {
+                scrollTop.style.opacity = '0';
+                scrollTop.style.transform = 'translateY(100px)';
+            }
+        });
+
+        // Scroll to top functionality
+        document.getElementById('scrollTop').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
         // Animate on scroll
@@ -746,20 +1277,61 @@
             observer.observe(el);
         });
 
-        // Counter animation for stats
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const phone = formData.get('phone');
+            const address = formData.get('address');
+            const message = formData.get('message');
+            
+            // Validate phone number
+            const phoneRegex = /^[0-9]{10,11}$/;
+            if (!phoneRegex.test(phone.replace(/\D/g, ''))) {
+                alert('❌ Vui lòng nhập số điện thoại hợp lệ (10-11 số)');
+                return;
+            }
+            
+            // Create WhatsApp message
+            const whatsappMessage = `🔥 YÊU CẦU TƯ VẤN SHOPPYCAM 🔥
+            
+👤 Khách hàng: ${name}
+📞 Điện thoại: ${phone}
+📍 Địa chỉ: ${address || 'Chưa cung cấp'}
+💬 Nhu cầu: ${message || 'Tư vấn chung về ShoppyCam'}
+
+⏰ Thời gian yêu cầu: ${new Date().toLocaleString('vi-VN')}`;
+            
+            // Open WhatsApp
+            const whatsappUrl = `https://wa.me/84xxxxxxxxx?text=${encodeURIComponent(whatsappMessage)}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Show success message
+            alert('✅ Thành công! Chúng tôi sẽ liên hệ bạn trong 30 phút. Cảm ơn bạn đã quan tâm đến ShoppyCam! 🚀');
+            
+            // Reset form
+            this.reset();
+            
+            // Track form submission
+            trackClick('Contact Form Submitted');
+        });
+
+        // Stats counter animation
         function animateCounters() {
             const counters = document.querySelectorAll('.stat-item h3');
             counters.forEach(counter => {
                 const target = parseInt(counter.textContent.replace(/\D/g, ''));
-                const increment = target / 100;
+                if (!target) return;
+                
+                const increment = target / 50;
                 let current = 0;
                 
                 const updateCounter = () => {
                     if (current < target) {
                         current += increment;
-                        if (counter.textContent.includes('K')) {
-                            counter.textContent = Math.floor(current) + 'K';
-                        } else if (counter.textContent.includes('%')) {
+                        if (counter.textContent.includes('%')) {
                             counter.textContent = Math.floor(current) + '%';
                         } else if (counter.textContent.includes('/')) {
                             counter.textContent = '24/7';
@@ -790,99 +1362,8 @@
             statsObserver.observe(statsSection);
         }
 
-        // Floating elements movement
-        function createFloatingElements() {
-            const shapes = document.querySelectorAll('.shape');
-            shapes.forEach((shape, index) => {
-                const randomX = Math.random() * 100;
-                const randomY = Math.random() * 100;
-                const randomDelay = Math.random() * 2;
-                
-                shape.style.left = randomX + '%';
-                shape.style.top = randomY + '%';
-                shape.style.animationDelay = randomDelay + 's';
-            });
-        }
-
-        createFloatingElements();
-
-        // Parallax effect for hero section
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const rate = scrolled * -0.5;
-            const heroContent = document.querySelector('.hero-content');
-            if (heroContent) {
-                heroContent.style.transform = `translateY(${rate}px)`;
-            }
-        });
-
-        // Dynamic gradient colors based on time
-        function updateGradientColors() {
-            const hour = new Date().getHours();
-            const hero = document.querySelector('.hero');
-            
-            if (hour >= 6 && hour < 12) {
-                // Morning - warmer colors
-                hero.style.background = 'linear-gradient(-45deg, #ff9a9e, #fecfef, #fecfef, #fecfef)';
-            } else if (hour >= 12 && hour < 18) {
-                // Afternoon - bright colors
-                hero.style.background = 'linear-gradient(-45deg, #a8edea, #fed6e3, #a8edea, #fed6e3)';
-            } else if (hour >= 18 && hour < 22) {
-                // Evening - sunset colors
-                hero.style.background = 'linear-gradient(-45deg, #ff6b6b, #feca57, #ff9ff3, #54a0ff)';
-            } else {
-                // Night - cool colors
-                hero.style.background = 'linear-gradient(-45deg, #667eea, #764ba2, #667eea, #764ba2)';
-            }
-        }
-
-        updateGradientColors();
-
-        // Interactive cursor effect
-        document.addEventListener('mousemove', (e) => {
-            const cursor = document.querySelector('.cursor');
-            if (!cursor) {
-                const newCursor = document.createElement('div');
-                newCursor.className = 'cursor';
-                newCursor.style.cssText = `
-                    position: fixed;
-                    width: 20px;
-                    height: 20px;
-                    background: radial-gradient(circle, rgba(231,60,126,0.3) 0%, transparent 70%);
-                    border-radius: 50%;
-                    pointer-events: none;
-                    z-index: 9999;
-                    transition: transform 0.1s ease;
-                `;
-                document.body.appendChild(newCursor);
-            }
-            
-            const cursorElement = document.querySelector('.cursor');
-            cursorElement.style.left = e.clientX - 10 + 'px';
-            cursorElement.style.top = e.clientY - 10 + 'px';
-        });
-
-        // Add hover effects to interactive elements
-        document.querySelectorAll('.btn, .feature-card, .pricing-card').forEach(element => {
-            element.addEventListener('mouseenter', () => {
-                const cursor = document.querySelector('.cursor');
-                if (cursor) {
-                    cursor.style.transform = 'scale(2)';
-                    cursor.style.background = 'radial-gradient(circle, rgba(35,166,213,0.4) 0%, transparent 70%)';
-                }
-            });
-            
-            element.addEventListener('mouseleave', () => {
-                const cursor = document.querySelector('.cursor');
-                if (cursor) {
-                    cursor.style.transform = 'scale(1)';
-                    cursor.style.background = 'radial-gradient(circle, rgba(231,60,126,0.3) 0%, transparent 70%)';
-                }
-            });
-        });
-
-        // Mobile menu toggle (for responsive design)
-        const createMobileMenu = () => {
+        // Mobile menu functionality
+        function createMobileMenu() {
             const nav = document.querySelector('.nav');
             const menuButton = document.createElement('button');
             menuButton.innerHTML = '☰';
@@ -893,153 +1374,184 @@
                 font-size: 1.5rem;
                 cursor: pointer;
                 color: #333;
+                padding: 0.5rem;
             `;
             
             menuButton.addEventListener('click', () => {
                 const navLinks = document.querySelector('.nav-links');
-                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+                const isVisible = navLinks.style.display === 'flex';
+                navLinks.style.display = isVisible ? 'none' : 'flex';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.background = 'rgba(255,255,255,0.98)';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.padding = '1rem';
+                navLinks.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+                navLinks.style.zIndex = '1001';
             });
             
             nav.appendChild(menuButton);
             
-            // Show menu button on mobile
+            // Show/hide menu button based on screen size
             const updateMenuVisibility = () => {
                 if (window.innerWidth <= 768) {
                     menuButton.style.display = 'block';
-                    document.querySelector('.nav-links').style.cssText = `
-                        display: none;
-                        position: absolute;
-                        top: 100%;
-                        left: 0;
-                        width: 100%;
-                        background: rgba(255,255,255,0.98);
-                        flex-direction: column;
-                        padding: 1rem;
-                        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-                    `;
                 } else {
                     menuButton.style.display = 'none';
-                    document.querySelector('.nav-links').style.cssText = `
-                        display: flex;
-                        position: static;
-                        width: auto;
-                        background: none;
-                        flex-direction: row;
-                        padding: 0;
-                        box-shadow: none;
-                    `;
+                    document.querySelector('.nav-links').style.display = 'flex';
+                    document.querySelector('.nav-links').style.position = 'static';
+                    document.querySelector('.nav-links').style.flexDirection = 'row';
+                    document.querySelector('.nav-links').style.background = 'none';
+                    document.querySelector('.nav-links').style.boxShadow = 'none';
                 }
             };
             
             window.addEventListener('resize', updateMenuVisibility);
             updateMenuVisibility();
-        };
+        }
 
         createMobileMenu();
 
-        // Performance optimization - lazy loading for images
-        const lazyImages = document.querySelectorAll('img[data-src]');
-        const imageObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.classList.remove('lazy');
-                    imageObserver.unobserve(img);
-                }
-            });
+        // Add click tracking for analytics
+        function trackClick(elementName) {
+            // Add your analytics tracking code here
+            console.log(`Clicked: ${elementName}`);
+            
+            // Example: Google Analytics
+            // gtag('event', 'click', {
+            //     'event_category': 'Landing Page',
+            //     'event_label': elementName
+            // });
+        }
+
+        // Track important button clicks
+        document.querySelectorAll('.btn-primary').forEach(btn => {
+            btn.addEventListener('click', () => trackClick('Primary CTA Button'));
         });
 
-        lazyImages.forEach(img => imageObserver.observe(img));
-
-        // Contact form submission (if you add a contact form)
-        const handleFormSubmission = () => {
-            const forms = document.querySelectorAll('form');
-            forms.forEach(form => {
-                form.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    // Add your form submission logic here
-                    alert('Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất có thể.');
-                });
-            });
-        };
-
-        handleFormSubmission();
-
-        // Scroll to top button
-        const createScrollToTop = () => {
-            const scrollButton = document.createElement('button');
-            scrollButton.innerHTML = '↑';
-            scrollButton.style.cssText = `
-                position: fixed;
-                bottom: 20px;
-                right: 20px;
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
-                background: linear-gradient(45deg, #e73c7e, #23a6d5);
-                color: white;
-                border: none;
-                font-size: 1.2rem;
-                cursor: pointer;
-                opacity: 0;
-                transform: translateY(100px);
-                transition: all 0.3s ease;
-                z-index: 1000;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            `;
-            
-            scrollButton.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-            
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 300) {
-                    scrollButton.style.opacity = '1';
-                    scrollButton.style.transform = 'translateY(0)';
-                } else {
-                    scrollButton.style.opacity = '0';
-                    scrollButton.style.transform = 'translateY(100px)';
-                }
-            });
-            
-            document.body.appendChild(scrollButton);
-        };
-
-        createScrollToTop();
-
-        // Add loading animation
-        window.addEventListener('load', () => {
-            const loader = document.createElement('div');
-            loader.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-                background-size: 400% 400%;
-                animation: gradientShift 2s ease infinite;
-                z-index: 10000;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: white;
-                font-size: 2rem;
-                font-weight: bold;
-                transition: opacity 0.5s ease;
-            `;
-            loader.innerHTML = '📸 ShoppyCam';
-            
-            document.body.appendChild(loader);
-            
-            setTimeout(() => {
-                loader.style.opacity = '0';
-                setTimeout(() => {
-                    loader.remove();
-                }, 500);
-            }, 1000);
+        document.querySelectorAll('.btn-demo').forEach(btn => {
+            btn.addEventListener('click', () => trackClick('Demo Button'));
         });
+
+        document.querySelector('.whatsapp-float').addEventListener('click', () => {
+            trackClick('WhatsApp Float Button');
+        });
+
+        // Add some floating animations to shapes
+        function randomizeShapes() {
+            const shapes = document.querySelectorAll('.shape');
+            shapes.forEach((shape, index) => {
+                const randomX = Math.random() * 80 + 10; // 10-90% from left
+                const randomY = Math.random() * 80 + 10; // 10-90% from top
+                const randomDelay = Math.random() * 2;
+                
+                shape.style.left = randomX + '%';
+                shape.style.top = randomY + '%';
+                shape.style.animationDelay = randomDelay + 's';
+            });
+        }
+
+        randomizeShapes();
+
+        // Update gradient based on time of day
+        function updateTimeBasedGradient() {
+            const hour = new Date().getHours();
+            const hero = document.querySelector('.hero.bg-animated');
+            
+            if (hour >= 6 && hour < 12) {
+                // Morning - energetic colors
+                hero.style.background = 'linear-gradient(-45deg, #ff9a9e, #fecfef, #a8edea, #fed6e3)';
+            } else if (hour >= 12 && hour < 18) {
+                // Afternoon - bright colors
+                hero.style.background = 'linear-gradient(-45deg, #a8edea, #fed6e3, #ff9a9e, #fecfef)';
+            } else if (hour >= 18 && hour < 22) {
+                // Evening - warm colors
+                hero.style.background = 'linear-gradient(-45deg, #ff6b6b, #feca57, #ff9ff3, #54a0ff)';
+            } else {
+                // Night - cool colors
+                hero.style.background = 'linear-gradient(-45deg, #667eea, #764ba2, #ee7752, #e73c7e)';
+            }
+            
+            hero.style.backgroundSize = '400% 400%';
+            hero.style.animation = 'gradientShift 15s ease infinite';
+        }
+
+        updateTimeBasedGradient();
+
+        // Auto-fill current time in form (hidden field for tracking)
+        const contactForm = document.getElementById('contactForm');
+        const timeField = document.createElement('input');
+        timeField.type = 'hidden';
+        timeField.name = 'submitTime';
+        timeField.value = new Date().toISOString();
+        contactForm.appendChild(timeField);
+
+        // Add page view tracking
+        document.addEventListener('DOMContentLoaded', function() {
+            trackClick('Page Loaded');
+        });
+
+        // Track scroll depth
+        let maxScroll = 0;
+        window.addEventListener('scroll', () => {
+            const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+            if (scrollPercent > maxScroll) {
+                maxScroll = scrollPercent;
+                if (maxScroll >= 25 && maxScroll < 50) {
+                    trackClick('Scrolled 25%');
+                } else if (maxScroll >= 50 && maxScroll < 75) {
+                    trackClick('Scrolled 50%');
+                } else if (maxScroll >= 75) {
+                    trackClick('Scrolled 75%');
+                }
+            }
+        });
+
+        // Add exit intent detection
+        document.addEventListener('mouseleave', function(e) {
+            if (e.clientY <= 0) {
+                // User is about to leave - could trigger a popup or special offer
+                console.log('Exit intent detected');
+                // You could show a special offer popup here
+            }
+        });
+    </script>
+
+    <!-- Schema Markup for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "ShoppyCam",
+        "description": "Giải pháp camera AI thông minh cho cửa hàng bán lẻ",
+        "url": "https://shoppycam.blogspot.com",
+        "logo": "https://via.placeholder.com/200x200/e73c7e/ffffff?text=ShoppyCam",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+84-1900-xxxx",
+            "contactType": "customer service",
+            "availableLanguage": "Vietnamese"
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "VN",
+            "addressRegion": "Hưng Yên"
+        },
+        "offers": {
+            "@type": "Offer",
+            "name": "Camera AI ShoppyCam",
+            "description": "Hệ thống camera AI thông minh cho cửa hàng",
+            "price": "990000",
+            "priceCurrency": "VND"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5",
+            "reviewCount": "6"
+        }
+    }
     </script>
 </body>
 </html>
